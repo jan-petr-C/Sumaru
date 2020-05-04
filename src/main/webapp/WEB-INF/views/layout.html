@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta name="author" content="bdrake" />
+    
+</head>
+
+<body>
+
+	<div th:fragment="head">
+
+		<table width="100%" class="blue" border="0">
+
+			<tr>
+				<td width="55%" valign="middle"><span class="logo">KATALOG
+				</span><span class="menu"> <span> | </span><a href="/home">
+							Hlavní strana</a> <span> | </span> <a href="/podminky"> Podmínky
+					</a><span> | </span> <a href="/odkazy"> Odkazy </a> <span> | </span><a
+						href="/oprovozovateli"> O provozovateli </a></span></td>
+				<td width="45%" class="login right" th:if="${logged}"
+					th:include="layout :: logged"></td>
+				<td width="45%" class="login right" th:unless="${logged}"
+					th:include="layout :: unlogged"></td>
+			</tr>
+		</table>
+
+
+	</div>
+
+	<div th:fragment="head_logged">
+
+		<table width="100%" class="blue" border="0">
+
+			<tr>
+				<td width="55%" valign="middle"><span class="logo">KATALOG
+				</span><span class="menu"> <span> | </span><a href="/home">
+							Hlavní strana</a> <span> | </span> <a href="/podminky"> Podmínky
+					</a><span> | </span> <a href="/odkazy"> Odkazy </a> <span> | </span><a
+						href="/oprovozovateli"> O provozovateli </a></span></td>
+				<td width="45%" class="login right" th:include="layout :: logged"></td>
+			</tr>
+		</table>
+
+
+	</div>
+
+	<div th:fragment="logged">
+
+		<form action="#" th:action="@{/logout}" method="POST">
+			Přihlášený uživatel: <span class="italic" th:text="${name}">Default_user></span>
+			<input type="submit" value="Odhásit se" />
+		</form>
+
+	</div>
+
+
+
+	<div th:fragment="unlogged">
+
+		<form name="f" th:action="@{/login}" method="post">
+			<span> <label for="username">Uživatel</label> <input
+				class="mytext" type="text" id="username" name="username" /> <label
+				for="password">Heslo</label> <input class="mytext" type="password"
+				id="password" name="password" />
+
+
+				<button type="submit" class="btn">Přihlásit se</button>
+			</span>
+		</form>
+
+	</div>
+
+	<div th:fragment="left">
+
+		Administrátorský účet: <i>admin</i>,
+		Heslo:<i>123456</i>.
+
+
+
+
+	</div>
+
+
+
+
+
+
+
+</body>
+
+</html>

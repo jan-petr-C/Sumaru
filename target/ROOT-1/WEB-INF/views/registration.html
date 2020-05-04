@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="" />
+<meta name="author" content="bdrake" />
+
+<title>Test</title>
+
+<link rel="stylesheet" href="/resources/css/my.css"
+	th:href="@{/resources/css/my.css}" />
+
+
+</head>
+
+
+<body>
+
+
+
+
+	<table width="1000" align="center" border="0">
+		<tr>
+			<td>
+				<div th:include="layout :: head"></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table width="100%" align="center" class="t10">
+					<tr>
+						<td width="170" valign="top"></td>
+
+						<td width="798">
+
+							<form action="#" th:action="@{/registration}"
+								th:object="${userDetails}" method="POST">
+
+								<table width="400" class="blue" align="align">
+									<tr>
+										<td width="120">Registrace</td><td></td>
+									</tr>
+									<tr>
+										<td >Jméno:</td>
+										<td><input type="text" th:field="*{name}" /></td>
+									</tr>
+									<tr>
+										<td>Heslo:</td>
+										<td><input type="password" th:field="*{password}" /></td>
+									</tr>
+									<tr>
+										<td>E-mail:</td>
+										<td><input type="text" th:field="*{email}" /></td>
+									</tr>
+									<tr>
+
+										<td>Telefon:</td>
+										<td><input type="text" th:field="*{telephone}" /></td>
+									</tr>
+
+
+
+									<tr>
+										<td><input type="submit" value="Registrovat" /></td>
+									</tr>
+
+								</table>
+							</form>
+
+
+
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

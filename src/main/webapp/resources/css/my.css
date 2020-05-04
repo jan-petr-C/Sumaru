@@ -1,0 +1,119 @@
+body {
+	text-align: left;
+	font-family: "Comic Sans";
+}
+
+.right {
+	text-align: right;
+}
+
+table {
+	table-layout:fixed;
+	border-spacing: 0;
+	
+}
+
+td {
+	word-wrap:break-word;
+	padding: 5px;
+	
+}
+
+td.zero {	
+	padding: 0px;
+	
+}
+
+.blue {
+	background-color: #b7e8ff;
+}
+
+.d_blue {
+	background-color: #86bbd4;
+}
+
+.gray {
+	background-color: #d2e1e8;
+}
+
+.gold {
+	background-color: #ffffc4;
+}
+
+/* unvisited link */
+a:link {
+	color: #4d4d4d;
+}
+
+/* visited link */
+a:visited {
+	color: #000000;
+}
+
+/* mouse over link */
+a:hover {
+	color: #ff0000;
+}
+
+/* selected link */
+a:active {
+	color: #424274;
+}
+
+.logo {
+	font-size: 140%;
+}
+
+.menu {
+	font-size: 90%;
+}
+
+.login {
+	font-size: 85%;
+}
+
+.inc_f {
+	font-size: 200%;
+}
+
+
+.t10 {
+	padding: 5px;
+	}
+	
+.t2 td{
+	padding: 1px;
+	}
+	
+
+
+.mytext {
+    width: 90px;
+}
+
+.mytext_size {
+    font-size: 85%
+}
+
+.myhead {
+    width: 200px;
+}
+
+.mytextarea {
+    width: 200px;
+}
+
+.tspace{
+	 cellspacing="2",
+}
+
+.italic {
+    font-style: italic;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+
+
