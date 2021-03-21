@@ -8,14 +8,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
-import org.springframework.orm.hibernate3.HibernateTransactionManager;
-import org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.Properties;
 
@@ -25,8 +25,9 @@ import java.util.Properties;
 public class HibernateConfig {
 
 	@Bean
-	public AnnotationSessionFactoryBean sessionFactory() throws SQLException {
-		AnnotationSessionFactoryBean sessionFactory = new AnnotationSessionFactoryBean();
+	public LocalSessionFactoryBean sessionFactory()
+			throws URISyntaxException, SQLException {
+		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource());
 		sessionFactory
 				.setPackagesToScan(new String[] { "sumaru.persistence.domain" });
@@ -41,11 +42,12 @@ public class HibernateConfig {
 		return encoder;
 	}
 
+
 	@Bean
 	@Autowired
-	public HibernateTransactionManager transactionManager(
+	public org.springframework.orm.hibernate5.HibernateTransactionManager transactionManager(
 			final SessionFactory sessionFactory) {
-		final HibernateTransactionManager txManager = new HibernateTransactionManager();
+		final org.springframework.orm.hibernate5.HibernateTransactionManager txManager = new org.springframework.orm.hibernate5.HibernateTransactionManager();
 		txManager.setSessionFactory(sessionFactory);
 
 		return txManager;

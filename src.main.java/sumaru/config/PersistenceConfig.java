@@ -5,14 +5,14 @@ import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import org.apache.tomcat.dbcp.dbcp.BasicDataSource;
+
+import org.apache.tomcat.dbcp.dbcp2.managed.BasicManagedDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
-import org.springframework.orm.hibernate3.HibernateTransactionManager;
-import org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
@@ -20,9 +20,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class PersistenceConfig {
 
 	@Bean
-	public AnnotationSessionFactoryBean sessionFactory()
+	public LocalSessionFactoryBean sessionFactory()
 			throws URISyntaxException, SQLException {
-		AnnotationSessionFactoryBean sessionFactory = new AnnotationSessionFactoryBean();
+		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource());
 		sessionFactory
 				.setPackagesToScan(new String[] { "sumaru.persistence.domain" });
@@ -32,14 +32,14 @@ public class PersistenceConfig {
 	}
 
 	@Bean
-	public BasicDataSource dataSource() throws URISyntaxException {
+	public BasicManagedDataSource dataSource() throws URISyntaxException {
 		
         String dbUrl = System.getenv("JDBC_DATABASE_URL");
         String username = System.getenv("JDBC_DATABASE_USERNAME");
         String password = System.getenv("JDBC_DATABASE_PASSWORD");
         
         
-		BasicDataSource basicDataSource = new BasicDataSource();
+		BasicManagedDataSource basicDataSource = new BasicManagedDataSource();
 		//basicDataSource.setDriverClassName("org.postgresql.Driver");
 		basicDataSource.setUrl(dbUrl);
 		basicDataSource.setUsername(username);
@@ -64,9 +64,9 @@ public class PersistenceConfig {
 	
 	@Bean
 	@Autowired
-	public HibernateTransactionManager transactionManager(
+	public org.springframework.orm.hibernate5.HibernateTransactionManager transactionManager(
 			final SessionFactory sessionFactory) {
-		final HibernateTransactionManager txManager = new HibernateTransactionManager();
+		final org.springframework.orm.hibernate5.HibernateTransactionManager txManager = new org.springframework.orm.hibernate5.HibernateTransactionManager();
 		txManager.setSessionFactory(sessionFactory);
 
 		return txManager;

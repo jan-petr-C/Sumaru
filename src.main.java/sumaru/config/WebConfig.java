@@ -9,26 +9,29 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring3.SpringTemplateEngine;
 import org.thymeleaf.spring3.view.ThymeleafViewResolver;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
+import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = { "sumaru.web.controller" })
-public class WebConfig extends WebMvcConfigurerAdapter {
+public class WebConfig implements WebMvcConfigurer {
 
-	@Bean
-	public ServletContextTemplateResolver templateResolver() {
-		ServletContextTemplateResolver resolver = new ServletContextTemplateResolver();
-		resolver.setPrefix("/views/");
-		resolver.setSuffix(".html");
-		// NB, selecting HTML5 as the template mode.
-		resolver.setTemplateMode("HTML5");
-		resolver.setCacheable(false);
-		return resolver;
-	}
+    @Bean
+    public ClassLoaderTemplateResolver templateResolver() {
+
+    	ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
+
+        templateResolver.setPrefix("/views/");
+        templateResolver.setCacheable(false);
+        templateResolver.setSuffix(".html");
+        templateResolver.setTemplateMode("HTML5");
+        templateResolver.setCharacterEncoding("UTF-8");
+
+        return templateResolver;
+    }
 
 	@Bean
 	public SpringTemplateEngine templateEngine() {
