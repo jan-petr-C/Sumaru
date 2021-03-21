@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta name="author" content="bdrake" />
+    
+</head>
+
+<body>
+
+
+
+	<div th:fragment="profile">
+		<table class="gray tspace">
+			<tr>
+				<td><a href="/profile/edit">Upravit osobní údaje</a></td>
+				<td><a href="/katalog">Otevřít katalog</a></td>
+			</tr>
+		</table>
+	</div>
+
+
+	<div th:fragment="home">
+		<table class="gray tspace">
+			<tr>
+				<td th:if="${logged}"><a href="/profile">Přejít na svůj
+						profil</a></td>
+				<td><a href="/katalog">Otevřít katalog</a></td>
+				<td th:unless="${logged}"><a href="/registration">Zaregistrovat
+						se</a></td>
+			</tr>
+		</table>
+	</div>
+
+
+	<div th:fragment="profileEdit">
+		<table class="gray tspace">
+			<tr>
+				<td><a href="/profile">Návrat do profilu</a></td>
+			</tr>
+		</table>
+	</div>
+
+	<div th:fragment="admin">
+		<table class="gray tspace">
+			<tr>
+
+				<td><a href="/admin/ads">Seznam všech inzerátů</a></td>
+				<td><a href="/admin/categories">Editovat Kategorie</a></td>
+			</tr>
+		</table>
+	</div>
+
+	<div th:fragment="adminUsers">
+		<table class="gray tspace">
+			<tr>
+
+				<td><a href="/admin/ads">Seznam všech inzerátů</a></td>
+				<td><a href="/admin/categories">Editovat Kategorie</a></td>
+
+
+				<td><a href="/admin">Seznam uživatelů</a></td>
+			</tr>
+		</table>
+	</div>
+
+	<div th:fragment="adminAds">
+		<table class="gray tspace">
+
+			<tr>
+				<td><a href="/admin">Seznam uživatelů</a></td>
+				<td><a href="/admin/categories">Editovat Kategorie</a></td>
+			</tr>
+		</table>
+	</div>
+
+	<div th:fragment="adminCategories">
+		<table class="gray tspace">
+			<tr>
+
+				<td><a href="/admin/ads">Seznam všech inzerátů</a></td>
+
+
+
+				<td><a href="/admin">Seznam uživatelů</a></td>
+			</tr>
+		</table>
+	</div>
+
+
+
+
+</body>
+
+</html>

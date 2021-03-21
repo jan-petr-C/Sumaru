@@ -34,12 +34,13 @@ public class PersistenceConfig {
 	@Bean
 	public BasicDataSource dataSource() throws URISyntaxException {
 		
-		String username = "postgres";
-		String password = "";
-		String dbUrl = "jdbc:postgresql://localhost/mydb";
-
+        String dbUrl = System.getenv("JDBC_DATABASE_URL");
+        String username = System.getenv("JDBC_DATABASE_USERNAME");
+        String password = System.getenv("JDBC_DATABASE_PASSWORD");
+        
+        
 		BasicDataSource basicDataSource = new BasicDataSource();
-		basicDataSource.setDriverClassName("org.postgresql.Driver");
+		//basicDataSource.setDriverClassName("org.postgresql.Driver");
 		basicDataSource.setUrl(dbUrl);
 		basicDataSource.setUsername(username);
 		basicDataSource.setPassword(password);

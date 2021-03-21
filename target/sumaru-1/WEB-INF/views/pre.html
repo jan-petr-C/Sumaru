@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="" />
+<meta name="author" content="bdrake" />
+
+<title>Test</title>
+
+<link rel="stylesheet" href="/resources/css/my.css"
+	th:href="@{/resources/css/my.css}" />
+
+
+</head>
+
+
+<body>
+
+
+
+
+	<table width="1000" align="center" border="0">
+		<tr>
+			<td>
+				<div th:include="layout :: head"></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table width="1000" align="center" class = "t10">
+					<tr>
+						<td width="170" valign="top">
+							<div th:include="layout :: l_side"></div>
+						</td>
+						<td width="798"><form action="#"
+								th:action="@{/registration/authenticate}" method="POST">
+
+
+Je třeba potvrdil e-mailovou adresu
+								<input type="submit" value="Stub_Authenticate" />
+
+
+							</form></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

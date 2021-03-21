@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="" />
+<meta name="author" content="bdrake" />
+
+<title>Test</title>
+
+<link rel="stylesheet" href="/resources/css/my.css"
+	th:href="@{/resources/css/my.css}" />
+
+
+</head>
+
+
+<body>
+
+
+
+
+	<table width="1000" align="center" border="0">
+		<tr>
+			<td>
+				<div th:include="layout :: head_logged"></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div th:include="context :: adminUsers"></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table width="1000" align="center" class="t10">
+					<tr>
+						<td width="170" valign="top"><div
+								th:include="layout :: l_side"></div></td>
+
+						<td width="798">
+							<table width="100%" class="t10">
+
+								<tr>
+									<td>
+
+										<table class="t2" border="0" width="100%">
+
+											<tr>
+												<th><div th:text="${user_name}"></div>
+													</th>
+													<td></td>
+											</tr>
+
+											<tbody th:each="ad: ${usersAds}">
+												<tr>
+													<td width="350"><br /> <span class="bold" th:text="${ad.head}"></span></td>
+												</tr>
+												<tr>
+													<td class="mytext_size"><span class="italic">kategorie:
+													</span><span
+															th:text="${ad.category.element}">default</span></td>
+												</tr>
+												<tr>
+													<td><span th:text="${ad.text}">default</span></td>													
+													<td><form action="#" th:action="@{/admin/deleteAd}"
+															method="POST">
+															<input name="ad_id" type="hidden" th:value="${ad.id}" />
+															<input type="submit" value="Odstranit" />
+														</form></td>
+												</tr>
+
+
+											</tbody>
+
+
+
+
+										</table>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
